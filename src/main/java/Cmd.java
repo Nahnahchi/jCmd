@@ -12,8 +12,8 @@ class Parser {
     private String command;
     private String[] arguments;
 
-    Parser(String user_input) {
-        String[] input = user_input.split(" ");
+    Parser(String userInput) {
+        String[] input = userInput.split(" ");
         command = input[0];
         arguments = input.length > 1 ? pickArgs(input) : new String[] {""};
     }
