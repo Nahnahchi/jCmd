@@ -1,7 +1,7 @@
 # jCmd
 A small framework for building interactive command line applications.
 
-This is a wrapper to jline3 library that will allow you to bind any cli command to a function.
+This is a wrapper to [jline3](https://github.com/jline/jline3) library that will allow you to bind any cli command to a function.
 
 For example, a verb named `execute-this-command` will be bound to a function `do_execute_this_command`. Similarly you can implement `help` functions that start with the prefix `help_`.
 
