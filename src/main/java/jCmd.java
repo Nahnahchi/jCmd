@@ -85,7 +85,7 @@ public class jCmd {
             Method method = this.getClass().getMethod(methodName, String[].class);
             method.invoke(this, new Object[] {parser.getArgs()});
         } catch (NoSuchMethodException e) {
-            System.out.println("No such function: " + methodName);
+            System.out.println("No such method: " + methodName);
         }
     }
 
@@ -96,7 +96,7 @@ public class jCmd {
                 Method helpMethod = this.getClass().getDeclaredMethod(methodName, String[].class);
                 helpMethod.invoke(this, new Object[] {new String[] {}});
             } catch (NoSuchMethodException e) {
-                System.out.println("No such function: " + methodName);
+                System.out.println("No such method: " + methodName);
             } catch (IllegalAccessException | InvocationTargetException e) {
                 System.out.println(e.getClass().getSimpleName() + ": " + e.getMessage());
             }
