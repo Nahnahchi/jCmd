@@ -10,36 +10,6 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.ArrayList;
 
-class Parser {
-
-    protected static final String DEFAULT = "default";
-
-    private final String command;
-    private final String[] arguments;
-
-    protected Parser(String userInput) {
-        String[] input = userInput.split(" ");
-        command = !input[0].isEmpty() ? input[0] : DEFAULT;
-        arguments = input.length > 1 ? pickArgs(input) : new String[] {DEFAULT};
-    }
-
-    protected String getCommand() {
-        return command;
-    }
-
-    protected String[] getArgs() {
-        return arguments;
-    }
-
-    private static String[] pickArgs(String[] inp) {
-        int len = inp.length - 1;
-        String[] args = new String[len];
-        System.arraycopy(inp, 1, args, 0, len);
-        return args;
-    }
-
-}
-
 public class jCmd {
 
     private static final String PROMPT_PREFIX = "~ ";
@@ -54,6 +24,36 @@ public class jCmd {
                 .terminal(TerminalBuilder.terminal())
                 .completer(completer)
                 .build();
+    }
+
+    static class Parser {
+
+        public static final String DEFAULT = "default";
+
+        private final String command;
+        private final String[] arguments;
+
+        public Parser(String userInput) {
+            String[] input = userInput.split(" ");
+            command = !input[0].isEmpty() ? input[0] : DEFAULT;
+            arguments = input.length > 1 ? pickArgs(input) : new String[] {DEFAULT};
+        }
+
+        public String getCommand() {
+            return command;
+        }
+
+        public String[] getArgs() {
+            return arguments;
+        }
+
+        private String[] pickArgs(String[] inp) {
+            int len = inp.length - 1;
+            String[] args = new String[len];
+            System.arraycopy(inp, 1, args, 0, len);
+            return args;
+        }
+
     }
 
     public static String getMethodName(@NotNull String prefix, @NotNull String command) {
@@ -117,6 +117,10 @@ public class jCmd {
                 }
             }
         }
+    }
+
+    public void do_Exit(String... args) {
+        isExit = true;
     }
 
     public void do_Default(String... args) {}
