@@ -6,9 +6,9 @@ This is a wrapper to [jline3](https://github.com/jline/jline3) library that will
 For example, a verb named `execute-this-command` will be bound to a function `do_execute_this_command`. Similarly you can implement `help` functions that start with the prefix `help_`.
 
 ```Java
-public class TestCmd extends Cmd {
+public class TestJCmd extends jCmd {
 
-    TestCmd() throws IOException {
+    TestJCmd() throws IOException {
         super(new StringsCompleter("test", "help", "exit"));
     }
 
@@ -36,7 +36,7 @@ public class TestCmd extends Cmd {
 
     public static void main(String[] args) {
         try {
-            TestCmd test = new TestCmd();
+            TestJCmd test = new TestJCmd();
             test.cmdLoop();
         } catch (Exception e) {
             e.printStackTrace();
